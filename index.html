@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nerve Force 2.0</title>
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nerve Force">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main id="home" class="screen">
+  <header>
+    <h1>Nerve Force 2.0</h1>
+    <p class="sub">13:00 · 19 steps</p>
+    <p class="streak" id="streak"></p>
+  </header>
+  <div class="banner">Red light on. Steps 1–4 (optionally 5–6) on the vibration plate, then step off.</div>
+  <button class="btn primary big" id="startBtn">Start</button>
+  <label class="toggle"><input type="checkbox" id="voiceToggle"> Spoken cues</label>
+  <section class="card">
+    <h2>How to breathe</h2>
+    <p>Slow nasal breathing. Relaxed posture, shoulders down. Make the exhale longer than the inhale.</p>
+  </section>
+  <details class="card" id="stepsDetails">
+    <summary>See all 19 steps</summary>
+    <ol id="stepList"></ol>
+  </details>
+</main>
+
+<main id="player" class="screen hidden">
+  <div class="topline"><span id="stepNum"></span><span id="overall"></span></div>
+  <h2 id="stepName"></h2>
+  <div class="ring">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="90" class="track"/>
+      <circle cx="100" cy="100" r="90" class="prog" id="prog"/>
+    </svg>
+    <div class="time" id="time">0:00</div>
+  </div>
+  <p id="stepHow" class="how"></p>
+  <button class="btn ghost" id="watchBtn">Watch how</button>
+  <p class="next">Next up: <span id="nextName"></span></p>
+  <div class="controls">
+    <button class="btn" id="backBtn">Back</button>
+    <button class="btn primary" id="pauseBtn">Pause</button>
+    <button class="btn" id="nextBtn">Next</button>
+  </div>
+  <div class="controls">
+    <button class="btn ghost" id="restartBtn">Restart</button>
+    <button class="btn ghost" id="quitBtn">Quit</button>
+  </div>
+</main>
+
+<main id="done" class="screen hidden">
+  <h1>Done</h1>
+  <p class="sub">Routine complete. Logged for today.</p>
+  <p class="streak" id="streak2"></p>
+  <button class="btn primary big" id="homeBtn">Home</button>
+</main>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="sheet">
+    <div class="sheethead"><strong id="vidTitle"></strong><button class="btn" id="closeModal">Close</button></div>
+    <div class="vwrap"><iframe id="vframe" title="Video" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <a id="ytLink" class="btn ghost" target="_blank" rel="noopener">Open in YouTube</a>
+  </div>
+</div>
+<script src="routine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
